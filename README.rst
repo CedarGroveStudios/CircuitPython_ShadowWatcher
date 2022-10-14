@@ -9,8 +9,8 @@ Introduction
     :alt: Discord
 
 
-.. image:: https://github.com/CedarGroveStudios/Cedargrove_CircuitPython_ShadowWatcher/workflows/Build%20CI/badge.svg
-    :target: https://github.com/CedarGroveStudios/Cedargrove_CircuitPython_ShadowWatcher/actions
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher/workflows/Build%20CI/badge.svg
+    :target: https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher/actions
     :alt: Build Status
 
 
@@ -18,8 +18,15 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-A CircuitPython helper class to detect a shadow cast over an analog light sensor such as the ALS-PT19 phototransistor.
+A CircuitPython helper class to detect a shadow cast over an analog light sensor
+such as the ALS-PT19 phototransistor.
 
+ShadowWatcher is a CircuitPython helper class to detect a shadow cast over an
+analog light sensor such as the ALS-PT19 phototransistor used in the Adafruit
+PyPortal, PyGamer, PyBadge, CircuitPlayground Express, CircuitPlayground
+Bluefruit, and the ALS-PT19 breakout board. Incorporates a low-pass filter to
+reduce sensitivity to flickering light levels which may be caused by power line
+frequency or light dimmer PWM passthrough. Useful as a simple gesture detector.
 
 Dependencies
 =============
@@ -27,39 +34,20 @@ This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
+* Analog light sensor hardware such as the ALS-PT19 phototransistor with an
+output value directly in proportion to the light intensity.
+
+* The ShadowWatcher was primarily built for and tested on the PyPortal, but
+should be able to function reliably on other microcontrollers with similar
+sensors. The automatic samples mode will test the microcontroller's analog
+acquision latency and adjust the internal low-pass filter's sample size to
+maintain the ~25 Hz cutoff frequency.
+
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
 or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.Installing from PyPI
-=====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-
-On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
-PyPI <https://pypi.org/project/Cedargrove-circuitpython-shadowwatcher/>`_.
-To install for current user:
-
-.. code-block:: shell
-
-    pip3 install Cedargrove-circuitpython-shadowwatcher
-
-To install system-wide (this may be required in some cases):
-
-.. code-block:: shell
-
-    sudo pip3 install Cedargrove-circuitpython-shadowwatcher
-
-To install in a virtual environment in your current project:
-
-.. code-block:: shell
-
-    mkdir project-name && cd project-name
-    python3 -m venv .venv
-    source .env/bin/activate
-    pip3 install Cedargrove-circuitpython-shadowwatcher
+`circup <https://github.com/adafruit/circup>`_.
 
 Installing to a Connected CircuitPython Device with Circup
 ==========================================================
@@ -76,7 +64,7 @@ following command to install:
 
 .. code-block:: shell
 
-    circup install shadowwatcher
+    circup install cedargrove_shadowwatcher
 
 Or the following command to update an existing version:
 
@@ -92,7 +80,20 @@ examples folder and be included in docs/examples.rst.
 
 Documentation
 =============
-API documentation for this library can be found on `Read the Docs <https://circuitpython-shadowwatcher.readthedocs.io/>`_.
+API documentation for this library can be found on `Read the Docs <https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher/blob/main/media/pseudo_readthedocs_shadowwatcher.pdf>`_.
+
+The ShadowWatcher helper class was tested on the PyPortal, but should be able to
+function reliably on other microcontrollers with similar sensors. The automatic
+samples mode will test the microcontroller's analog acquisition latency and
+adjust the internal low-pass filter's sample size to maintain the ~25 Hz cutoff
+frequency.
+
+The left oscilloscope image shows the sampled sensor light level value in a room
+with a dimmed LED light source (yellow trace). Note that the primary frequency
+of the signal is 120Hz (purple frequency spectrum graph). The right image shows
+the sampled sensor light level value after filtering.
+
+.. image:: https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher/blob/main/media/FIR_boxcar_filter_pyportal.png
 
 For information on building library documentation, please check out
 `this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
