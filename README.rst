@@ -74,8 +74,22 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. code-block:: python
+
+    import board
+    import time
+    from shadowwatcher import ShadowWatcher
+    # Instantiate detector class and establish background level
+    gesture = ShadowWatcher(pin=board.LIGHT, auto=True)
+    while True:
+        if gesture.detect():
+            print(f"SHADOW DETECTED")
+            while gesture.detect():
+                # Wait until the shadow is gone
+                time.sleep(1)
+            # Rebaseline the background level
+            gesture.refresh_background()
+            print(f"background: {gesture.background:6.0f}")
 
 Documentation
 =============
