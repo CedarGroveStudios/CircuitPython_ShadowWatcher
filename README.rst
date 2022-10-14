@@ -34,8 +34,7 @@ This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
-* Analog light sensor hardware such as the ALS-PT19 phototransistor with an
-output value directly in proportion to the light intensity.
+* Analog light sensor hardware such as the ALS-PT19 phototransistor with an output value directly in proportion to the light intensity.
 
 * The ShadowWatcher was primarily built for and tested on the PyPortal, but
 should be able to function reliably on other microcontrollers with similar
