@@ -29,9 +29,7 @@ import time
 from analogio import AnalogIn
 
 __version__ = "0.0.0+auto.0"
-__repo__ = (
-    "https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher.git"
-)
+__repo__ = "https://github.com/CedarGroveStudios/CircuitPython_ShadowWatcher.git"
 
 
 class ShadowWatcher:
