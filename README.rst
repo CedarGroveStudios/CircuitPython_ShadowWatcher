@@ -36,7 +36,7 @@ This driver depends on:
 
 * Analog light sensor hardware such as the ALS-PT19 phototransistor with an output value directly in proportion to the light intensity.
 
-* The ShadowWatcher was primarily built for and tested on the PyPortal, but
+The ShadowWatcher was primarily built for and tested on the PyPortal, but
 should be able to function reliably on other microcontrollers with similar
 sensors. The automatic samples mode will test the microcontroller's analog
 acquision latency and adjust the internal low-pass filter's sample size to
